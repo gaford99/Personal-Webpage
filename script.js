@@ -18,19 +18,35 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
 document.addEventListener('DOMContentLoaded', function() {
     const firstPage = document.getElementById('first-page');
-    const secondPage = document.getElementById('second-page');
-    const enterButton = document.querySelector('.enter-button');
+    const menuPage = document.getElementById('menu-page');
+    const continueButton = document.querySelector('.continue-button');
+    const menuItems = document.querySelectorAll('.menu-item');
 
-    enterButton.addEventListener('click', function() {
-        // Fade out first page
-        firstPage.classList.add('hidden');
-        
-        // Show second page
-        secondPage.classList.remove('hidden');
-        
-        // After transition, remove first page from DOM flow
+    // Handle continue button click
+    continueButton.addEventListener('click', function(e) {
+        e.preventDefault();
+        firstPage.style.opacity = '0';
         setTimeout(() => {
-            firstPage.style.display = 'none';
-        }, 1000);
+            firstPage.classList.add('hidden');
+            menuPage.classList.remove('hidden');
+            setTimeout(() => {
+                menuPage.classList.add('visible');
+            }, 50);
+        }, 500);
+    });
+
+    // Handle menu item selection
+    menuItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+            e.preventDefault();
+            const page = this.dataset.page;
+            // Add your page transition logic here
+            console.log(`Navigate to ${page} page`);
+        });
+
+        // Handle hover sound effects if desired
+        item.addEventListener('mouseenter', function() {
+            // Add hover sound effect here if desired
+        });
     });
 });

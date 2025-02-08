@@ -10,15 +10,7 @@ body {
     font-family: 'Arial', sans-serif;
     color: #333;
     line-height: 1.6;
-}
-
-h1, h2, p {
-    color: #333;
-}
-
-a {
-    text-decoration: none;
-    color: #5F9EA0;
+    background: #470a91; /* Darker space color */
 }
 
 /* Hero Section */
@@ -26,7 +18,6 @@ a {
     position: relative;
     width: 100%;
     height: 100vh;
-    background: #ff5722; /* Updated background color */
 }
 
 .pixel-background {
@@ -35,73 +26,38 @@ a {
     height: 100%;
 }
 
-@keyframes smoke {
-    0% {
-        background-position: center center;
-    }
-    25% {
-        background-position: center 51%;
-    }
-    50% {
-        background-position: 51% center;
-    }
-    75% {
-        background-position: center 49%;
-    }
-    100% {
-        background-position: center center;
-    }
-}
-
 .pixel-character {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
-    height: 100vh;
-    background: url('ezgif.com-gif-to-webp-converter.webp') no-repeat center center;
-    background-size: contain;
+    height: 100%;
+    background: url('ezgif.com-speed\ \(1\).webp') no-repeat center center;
+    background-size: 100%;  /* Changed from 95% to 100% to fill width */
+    cursor: pointer;
     z-index: 2;
-    /* Optional: Add these for smoother rendering */
-    image-rendering: -webkit-optimize-contrast;
-    backface-visibility: hidden;
-    transform: translateZ(0);
+    mix-blend-mode: screen;
 }
 
-/* Optional: Add a dark overlay if the animation is too bright */
-.pixel-character::after {
-    content: '';
+#main-content {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-        rgba(0, 0, 0, 0.1),
-        rgba(0, 0, 0, 0)
-    );
-    pointer-events: none;
+    transition: opacity 1s ease, visibility 1s ease;
 }
 
-#main-content {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    z-index: 3;
-}
-
-/* Remove the .hidden class temporarily to see if content appears */
 .hero-content {
-    position: relative;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
     padding: 2rem;
-    transition: opacity 1s ease;
+    width: 80%;
     z-index: 3;
-}
-
-.hero-content h1,
-.hero-content p {
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    color: white;
 }
 
 .hero-content h1 {
@@ -109,30 +65,35 @@ a {
     font-size: 6rem;
     margin-bottom: 10px;
     color: white;
+    opacity: 1;
+    transition: opacity 0.5s ease;
 }
 
 .hero-content p {
     font-size: 1.5rem;
-    color: white;
     margin-bottom: 20px;
-}
-
-.cta-button {
-    background: #5F9EA0;
     color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 1.2rem;
-    transition: background 0.3s ease;
 }
 
-.cta-button:hover {
-    background: #4A7A7C;
+/* Visibility Classes */
+#main-content.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+#main-content.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.hidden {
+    display: none;
 }
 
 /* Portfolio Section */
 #portfolio {
     padding: 2rem;
+    background: white;
 }
 
 .gallery {
@@ -148,13 +109,6 @@ a {
     text-align: center;
 }
 
-/* Accomplishments Section */
-#accomplishments {
-    padding: 50px 20px;
-    text-align: center;
-    background: #F9F9F9;
-}
-
 /* Footer */
 footer {
     text-align: center;
@@ -167,46 +121,6 @@ footer {
     display: none;
 }
 
-#main-content.hidden {
-    opacity: 0;
-    visibility: hidden;
-}
-
-#main-content.visible {
-    opacity: 1;
-    visibility: visible;
-    transition: opacity 1s ease;
-}
-
-.hidden {
-    display: none;
-}
-
-/* Enter Button Styles */
-.enter-button {
-    position: absolute;
-    bottom: 50px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 15px 30px;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 1.2rem;
-    color: white;
-    background: rgba(0, 0, 0, 0.7);
-    border: 2px solid white;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    z-index: 3;
-    text-decoration: none;
-}
-
-.enter-button:hover {
-    background: rgba(0, 0, 0, 0.9);
-    transform: translateX(-50%) scale(1.05);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-}
-
 /* Remove the scroll-based opacity change */
 #name {
     opacity: 1 !important;
@@ -217,7 +131,7 @@ footer {
     position: fixed;
     width: 100%;
     height: 100vh;
-    background: #ff5722;
+    background: #470a91;
     transition: opacity 1s ease;
 }
 
@@ -226,7 +140,7 @@ footer {
     position: fixed;
     width: 100%;
     height: 100vh;
-    background: #1a1a1a; /* Dark background for main page */
+    background: #470a91;
     opacity: 0;
     visibility: hidden;
     transition: opacity 1s ease, visibility 1s ease;
@@ -270,45 +184,65 @@ footer {
 
 /* First Page Styles */
 #first-page {
-    background: #ff5722;
+    background: #470a91;
+    background: linear-gradient(
+        135deg,
+        #470a91 0%,
+        #3c0878 25%,
+        #2f0660 50%,
+        #3c0878 75%,
+        #470a91 100%
+    );
+    position: relative;
+    overflow: hidden;
     z-index: 2;
 }
 
-.pixel-character {
+/* Add stars effect */
+#first-page::before {
+    content: '';
     position: absolute;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100vh;
-    background: url('your-webp-file.webp') no-repeat center center;
-    background-size: contain;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(white, rgba(255,255,255,.2) 2px, transparent 3px),
+        radial-gradient(white, rgba(255,255,255,.15) 1px, transparent 2px),
+        radial-gradient(white, rgba(255,255,255,.1) 2px, transparent 3px);
+    background-size: 750px 750px, 450px 450px, 350px 350px;
+    background-position: 0 0, 40px 60px, 130px 270px;
+    animation: twinkle 10s linear infinite;
+    z-index: 1;
 }
 
-.enter-button {
+/* Add subtle animation to stars */
+@keyframes twinkle {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
+/* Add a subtle glow effect */
+.pixel-character::after {
+    content: '';
     position: absolute;
-    bottom: 50px;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 15px 30px;
-    font-family: 'Press Start 2P', cursive;
-    font-size: 1.2rem;
-    color: white;
-    background: rgba(0, 0, 0, 0.7);
-    border: 2px solid white;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.enter-button:hover {
-    background: rgba(0, 0, 0, 0.9);
-    transform: translateX(-50%) scale(1.05);
-    box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(
+        circle at center,
+        rgba(71, 10, 145, 0.3),
+        transparent 70%
+    );
+    z-index: 1;
+    pointer-events: none;
 }
 
 /* Second Page Styles */
 #second-page {
-    background: #1a1a1a;
+    background: #470a91;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -336,4 +270,167 @@ footer {
 .visible {
     opacity: 1;
     pointer-events: auto;
+}
+
+/* Remove any leftover enter-related styles */
+.enter-text,
+.enter-link,
+.enter-container {
+    display: none;
+}
+
+/* Clean up duplicate hero-content definitions */
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 2rem;
+    width: 80%;
+    z-index: 3;
+    color: white;
+}
+
+/* Updated Stacked Button Styles */
+.continue-button {
+    position: fixed;
+    bottom: 40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1.5rem;
+    color: white;
+    text-decoration: none;
+    z-index: 100;
+    text-shadow: 0 4px 0 #000; /* Simplified shadow to just appear below */
+    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.7));
+}
+
+.continue-button span {
+    position: relative;
+    display: block;
+    padding: 15px 30px;
+    background: none;
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Adjust the glowing layers to appear below */
+.continue-button span::before,
+.continue-button span::after {
+    content: "Click to Continue";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    background: none;
+    border: none;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.continue-button span::before {
+    top: 6px; /* Increased to move shadow down */
+    color: rgba(255, 255, 255, 0.3);
+    filter: blur(4px);
+    z-index: -1;
+}
+
+.continue-button span::after {
+    top: 8px; /* Increased to move shadow down */
+    color: rgba(255, 255, 255, 0.2);
+    filter: blur(8px);
+    z-index: -2;
+}
+
+/* Hover effect */
+.continue-button:hover {
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.9));
+    transform: translateX(-50%) scale(1.05);
+    transition: all 0.3s ease;
+}
+
+/* Menu Page Styles */
+#menu-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: #470a91;
+    z-index: 1;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease, visibility 0.5s;
+}
+
+#menu-page.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.menu-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('menu-background.webp') no-repeat center center;
+    background-size: cover;
+    opacity: 0.3;
+}
+
+.menu-container {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 2;
+}
+
+.menu-title {
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 4rem;
+    text-shadow: 0 4px 0 #000;
+}
+
+.menu-options {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.menu-item {
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.menu-item .selector {
+    position: absolute;
+    left: -2rem;
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.menu-item:hover {
+    transform: translateX(1rem);
+    color: #a78bfa;
+}
+
+.menu-item:hover .selector {
+    opacity: 1;
 }

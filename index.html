@@ -3,24 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Your Name - Portfolio</title>
+  <title>Geoffrey Ford - Portfolio</title>
   <link rel="stylesheet" href="styles.css">
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 </head>
 <body>
   <!-- First Page -->
   <div id="first-page">
     <div class="pixel-character"></div>
-    <button class="enter-button">Enter the Void</button>
+    <a href="#" class="continue-button">
+        <span>Click to Continue</span>
+    </a>
   </div>
 
-  <!-- Second Page (initially hidden) -->
-  <div id="second-page" class="hidden">
-    <h1>Geoffrey Ford</h1>
-    <p>Physicist | COO | Historian</p>
-    <div class="portfolio">
-      <!-- Add your portfolio content here -->
+  <!-- Menu Page -->
+  <div id="menu-page" class="hidden">
+    <div class="menu-background"></div>
+    <div class="menu-container">
+      <h1 class="menu-title">Select Option</h1>
+      <nav class="menu-options">
+        <a href="#" class="menu-item" data-page="about">
+          <span class="selector">▶</span>
+          About Me
+        </a>
+        <a href="#" class="menu-item" data-page="portfolio">
+          <span class="selector">▶</span>
+          Portfolio
+        </a>
+        <a href="#" class="menu-item" data-page="visionboard">
+          <span class="selector">▶</span>
+          Visionboard
+        </a>
+      </nav>
     </div>
   </div>
 
